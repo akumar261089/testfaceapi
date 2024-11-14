@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yourgithubusername.github.io/smileplease/sitemap.xml

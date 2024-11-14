@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmilePlease</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Title Bar -->
+    <header class="title-bar">
+        <h1>SmilePlease 😊</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Random Quote -->
+        <div id="quote">"A smile is the shortest distance between two people."</div>
+
+        <!-- Jokes Container -->
+        <div id="jokeContainer" class="joke-container">
+            Loading a joke for you...
+        </div>
+
+       
+
+        <!-- Video Element for Webcam -->
+        <video id="webcamVideo" width="640" height="480" autoplay style="display: none;"></video>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button id="smileButton">Yes, I smiled 😄</button>
+            <button id="tryAgainButton">Try again 🔄</button>
+        </div>
+
+        <!-- Smile Count -->
+        <p id="smileCount">Total Smiles: 0</p>
+         <!-- Camera Toggle Slider -->
+         <label for="cameraToggle">Use Camera</label>
+         <p id = "ageGender">Age and gender</p>
+         <input type="checkbox" id="cameraToggle" />
+         <br />
+    </div>
+
+    <!-- Footer with Licensing Information -->
+    <footer>
+        <p>&copy; 2024 SmilePlease. All rights reserved.</p>
+        <p>This project is licensed under the MIT License.</p>
+    </footer>
+    <script src="./face-api.min.js"></script>
+    <script src="script.js" defer></script>
+    
+</body>
+</html>
