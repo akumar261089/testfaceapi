@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     fetchNewJoke();
     fetchRandomQuote();
 
-    document.getElementById("smileButton").addEventListener("click", () => {
-        incrementSmileCounter();
-        fetchNewJoke();
-    });
+    // document.getElementById("smileButton").addEventListener("click", () => {
+    //     incrementSmileCounter();
+    //     fetchNewJoke();
+    // });
 
     document.getElementById("tryAgainButton").addEventListener("click", () => {
         fetchNewJoke();
