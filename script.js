@@ -12,7 +12,7 @@ let displayedJokes = JSON.parse(localStorage.getItem("displayedJokes")) || [];
 
 // Display the initial smile count on page load
 document.addEventListener("DOMContentLoaded", async () => {
-    document.getElementById("smileCount").innerText = `Total Smiles: ${smileCount}`;
+    document.getElementById("smileCount").innerText = `Total Smiles: ${smileCount/10}`;
     await fetchUserLocation();
     fetchNewJoke();
     fetchRandomQuote();
@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // Function to load face-api models
 async function loadFaceApiModels() {
-    await faceapi.nets.ssdMobilenetv1.loadFromUri('/models');
-    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
-    await faceapi.nets.faceExpressionNet.loadFromUri('/models');
-    await faceapi.nets.ageGenderNet.loadFromUri('/models');
+    await faceapi.nets.ssdMobilenetv1.loadFromUri('./models');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('./models');
+    await faceapi.nets.faceExpressionNet.loadFromUri('./models');
+    await faceapi.nets.ageGenderNet.loadFromUri('./models');
     console.log("Face-api models loaded successfully");
 }
 
