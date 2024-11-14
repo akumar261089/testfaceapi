@@ -4,6 +4,7 @@ let smileCount = parseInt(localStorage.getItem("smileCount")) || 0;
 let userLocation = {};
 let userIP = "";
 let isCameraActive = false;
+let genderEmoji ="😊"
 const webcamVideo = document.getElementById("webcamVideo");
 
 // Retrieve previously displayed jokes from localStorage or initialize as an empty array
@@ -123,15 +124,32 @@ async function detectFaceAttributes() {
             // Output the highest expression
             console.log(currentExpression);
 
-            // Display age and gender
-            document.getElementById("ageGender").innerText = `Age: ${age -5} , Gender: ${gender}, Expression: ${currentExpression}`;
+           
+
+            // Age and Gender Conditions
+            if (age < 18) {
+              // Kid: gender-based
+              genderEmoji = (gender === "male") ? "👦" : "👧"; // Boy for male, Girl for female
+            } else if (age >= 18 && age < 60) {
+              // Young Adult: gender-based
+              genderEmoji = (gender === "male") ? "👨" : "👩"; // Man for male, Woman for female
+            } else {
+              // Older Adult: gender-based
+              genderEmoji = (gender === "male") ? "👴" : "👵"; // Old man for male, Old woman for female
+            }
+
+                // Update the HTML with Age, Gender Image, and Expression
+               // document.getElementById("ageGender").innerHTML = `<span class="large-smile">${genderEmoji}</span> `;
+
+
+            //document.getElementById("ageGender").innerText = `Age: ${age -5} , Gender: ${gender}, Expression: ${currentExpression}`;
 
             // Check if the user is smiling
-            if (expressions.happy > 0.5) {
+            if (expressions.happy > 0.9)  {
                 incrementSmileCounter();
             }
 
-            console.log("Expressions: ", expressions);
+            //console.log("Expressions: ", expressions);
             console.log(`Age: ${age}, Gender: ${gender}`);
         }
     }, 100); // Run detection every 100ms
@@ -139,9 +157,13 @@ async function detectFaceAttributes() {
 
 // Increment smile count, update display, and store it in localStorage
 function incrementSmileCounter() {
+    let statusBar = document.getElementById("statusBar");
+    
     smileCount++;
     localStorage.setItem("smileCount", smileCount);
-    document.getElementById("smileCount").innerText = `Total Smiles: ${smileCount}`;
+    document.getElementById("smileCount").innerHTML = `<span class="large-smile">${genderEmoji}</span>: ${Math.trunc(smileCount/10)}`;
+    statusBar.value = smileCount%10
+    console.log(smileCount%10)
 }
 
 // Fetch and display a new joke (same function as before)
